@@ -1,95 +1,151 @@
-/* javascript */
+class ConstructorChart {
+  /**
+   * Class constructor with basic chart configuration
+   * @param {Object}
+   * @param {Array}
+   */
+  constructor(_config, _data) {
+    // Configuration object with defaults
+    this.config = {
+      parentElement: _config.parentElement,
+      colorScale: _config.colorScale,
+      margin: _config.margin || { top: 40, right: 10, bottom: 60, left: 60 },
+      containerWidth: _config.containerWidth || 960,
+      containerHeight: _config.containerHeight || 500,
+      tooltipPadding: _config.tooltipPadding || 15,
+    };
 
-// setting up SVG drawing area
+    //this.dispatcher = _dispatcher;
+    this.data = _data;
+    this.initVis();
+  }
 
-var margin = { top: 40, right: 10, bottom: 60, left: 60 };
+  /**
+   * Initialize scales/axes and append static elements, such as axis titles
+   */
+  initVis() {
+    let vis = this;
 
-var width = 960 - margin.left - margin.right;
-var height = 500 - margin.top - margin.bottom;
+    // Calculate inner chart size. Margin specifies the space around the actual chart.
+    vis.width =
+      vis.config.containerWidth -
+      vis.config.margin.left -
+      vis.config.margin.right;
+    vis.height =
+      vis.config.containerHeight -
+      vis.config.margin.top -
+      vis.config.margin.bottom;
 
-var svg = d3
-  .select("#const-chart-area")
-  .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", `translate(${margin.left} , ${margin.top})`);
+    // Initialize scales
 
-// Scales
-var x = d3
-  .scaleBand()
-  .range([0, width - margin.right - margin.left])
-  .paddingInner(0.05);
+    // creating the color scale
+    vis.colorScale = this.config.colorScale;
 
-var y = d3.scaleLinear().range([height, 0]);
+    //x and y scale
+    vis.xScale = d3
+      .scaleBand()
+      .range([0, vis.width])
+      .paddingInner(0.05);
 
-// Initialize data
-loadData();
+    vis.yScale = d3.scaleLinear().range([vis.height, 0]);
 
-// initializing data
-var data;
+    // defining axes
+     vis.xAxis = d3.axisBottom(vis.xScale).tickSizeOuter(0);
+     vis.yAxis = d3.axisLeft(vis.yScale).tickSizeOuter(0);
 
-// defining axes
-var xAxis = d3.axisBottom(x).tickSizeOuter(0);
-var yAxis = d3.axisLeft(y).tickSizeOuter(0);
+    // Define size of SVG drawing area
+    vis.svg = d3
+      .select(vis.config.parentElement)
+      .attr("width", vis.config.containerWidth)
+      .attr("height", vis.config.containerHeight);
 
-svg
-  .append("g")
-  .attr("class", "x-axis axis")
-  .attr("transform", `translate(0, ${height})`);
-svg.append("g").attr("class", "y-axis axis");
+    // SVG Group containing the actual chart; D3 margin convention
+    vis.chart = vis.svg
+      .append("g")
+      .attr(
+        "transform",
+        `translate(${vis.config.margin.left},${vis.config.margin.top})`
+      );
 
-// Load CSV file
-function loadData() {
-  d3.csv("data/constructor_data.csv")
-    .then((csv) => {
-      //converting to numerics
-      csv.forEach(function (d) {
-        d.points = +d.points;
-        d.wins = +d.wins;
+    // Append empty x-axis group and move it to the bottom of the chart
+    vis.xAxisG = vis.chart
+      .append("g")
+      .attr("class", "axis x-axis")
+      .attr("transform", `translate(0,${vis.height})`);
+
+    // Append y-axis group
+    vis.yAxisG = vis.chart.append("g").attr("class", "axis y-axis");
+
+    // Append axis title
+    vis.svg
+      .append("text")
+      .attr("class", "axis-title")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("dy", ".71em")
+      .text("Points");
+  }
+
+  /**
+   * Prepare data and scales before we render it
+   */
+  updateVis() {
+    let vis = this;
+
+    // Specify accessor functions
+    vis.colorValue = (d) => d.points;
+    vis.xValue = (d) => d.name;
+    vis.yValue = (d) => d.points;
+
+    // Set the scale input domains
+    vis.xScale.domain(vis.data.map(vis.xValue));
+    vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
+
+    vis.renderVis();
+  }
+
+  /**
+   * Bind data to visual elements
+   */
+  renderVis() {
+    let vis = this;
+
+    // Add rectangles
+    vis.bars = vis.chart
+      .selectAll(".bar")
+      .data(vis.data) //binding data to rectangles
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", (d) => vis.xScale(d.name)) // Set x position based on data"s key using x-scale
+      .attr("y", (d) => vis.yScale(d.points)) // Set y position based on count using y-scale
+      .attr("width", vis.xScale.bandwidth()) // Set bar width based on band scale
+      .attr("height", (d) => vis.height - vis.yScale(d.points))
+      .attr("fill", (d) => vis.colorScale(d.points))
+      
+
+      .on("mouseover", (event, d) => {
+        d3
+          .select("#tooltip")
+          .style("display", "block")
+          .style("left", event.pageX + vis.config.tooltipPadding + "px")
+          .style("top", event.pageY + vis.config.tooltipPadding + "px").html(`
+                <div class="tooltip-title">${d.name}</div>
+                <div><i>1950-2023</i></div>
+                <ul>
+                  <li>Total Points: ${d.points}</li>
+                  <li>Total Wins: ${d.wins}</li>
+                </ul>
+              `);
+      })
+
+      // Tooltip event listeners
+      .on("mouseleave", () => {
+        d3.select("#tooltip").style("display", "none");
       });
 
-      //sorting by constructor points
-      data = csv.sort((a, b) => b.points - a.points);
-
-      //console.log(data.slice(0,10))
-
-      data = data.slice(0, 10);
-
-      // Draw the visualization for the first time
-      updateVisualization();
-    })
-    .catch((error) => {
-      console.log("Error loading the data");
-    });
-}
-
-// Render visualization
-function updateVisualization() {
-  console.log("The dataset:", data);
-
-  //get selected ranking type
-  // const points = d3.select("#points").property("value");
-
-  //setting domains
-  x.domain(data.map((d) => d.name));
-  console.log(data.map((d) => d.name));
-  y.domain([0, data[0].points]); //data is sorted in descending, points of first ele are max
-
-  // creating axis
-  svg.select(".x-axis").call(xAxis);
-  svg.select(".y-axis").call(yAxis);
-
-  //creating bars for bar chart
-  const bars = svg.selectAll(".bar").data(data, (d) => d.name);
-
-  // making rectangles for bar chart
-  bars
-    .join("rect")
-    .attr("class", "bar")
-    .attr("fill", "steelblue")
-    .attr("x", (d) => x(d.name))
-    .attr("y", (d) => y(d.points))
-    .attr("width", x.bandwidth())
-    .attr("height", (d) => height - y(d.points));
+    // Update axes
+    vis.xAxisG.call(vis.xAxis);
+    vis.yAxisG.call(vis.yAxis);
+  }
 }

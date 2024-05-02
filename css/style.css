@@ -20,33 +20,28 @@ body {
   
   /* Marks */
 
-  /* .bar {
+.bar {
     shape-rendering: crispEdges;
   }
   .bar:hover {
     stroke: #777;
+    fill: #1FE  /*TEMPORARY COLOR*/
   }
-    stroke: #333;
-  }
-  
   
   
   /* Axes */
-  /* .axis line {
+  .axis line {
     fill: none;
-    stroke: #ddd;
+    stroke: #000;
     shape-rendering: crispEdges;
   }
-  .axis text {
-    font-size: 13px;
-    fill: #6b6b6b;
-  }
+  
   .axis-title {
-    font-size: 13px;
+    font-size: 14px;
     fill: #888;
   }
   .y-axis .tick:first-child line {
-    stroke: #b1b1b1;
+    stroke: #000;
   }
   .y-axis .tick:first-child text {
     display: none;
@@ -57,16 +52,20 @@ body {
   .axis path {
     display: none;
   }
-   */
+  .x-axis, .y-axis text {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+  
   
   /* Tooltip */
-  /* #tooltip {
+  #tooltip {
     position: absolute;
     display: none;
     background: #fff;
     box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
     border: 1px solid #ddd;
-    font-size: 12px;
+    font-family: 'Helvetica';
+    font-size: 15px;
     font-weight: 500;
     padding: 8px;
     min-width: 160px;
@@ -74,11 +73,12 @@ body {
   }
   .tooltip-title {
     color: #000;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
   }
   #tooltip ul {
     margin: 5px 0 0 0;
     padding-left: 20px;
-  } */
+  }
+  
    
