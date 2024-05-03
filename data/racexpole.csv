@@ -1,86 +1,86 @@
-,full_name,name,position,grid poles
-0,Lewis Hamilton,McLaren,103,104.0
-1,Michael Schumacher,Ferrari,91,68.0
-2,Sebastian Vettel,Toro Rosso,53,57.0
-3,Alain Prost,McLaren,51,33.0
-4,Max Verstappen,Red Bull,45,27.0
-5,Ayrton Senna,McLaren,41,65.0
-6,Fernando Alonso,McLaren,32,22.0
-7,Nigel Mansell,Williams,31,32.0
-8,Jackie Stewart,Tyrrell,27,17.0
-9,Niki Lauda,McLaren,25,24.0
-10,Jim Clark,Lotus-Ford,25,34.0
-11,Juan Fangio,Ferrari,24,29.0
-12,Nico Rosberg,Mercedes,23,30.0
-13,Nelson Piquet,Williams,23,24.0
-14,Damon Hill,Williams,22,20.0
-15,Kimi Räikkönen,McLaren,21,18.0
-16,Mika Häkkinen,McLaren,20,26.0
-17,Stirling Moss,Team Lotus,16,17.0
-18,Jenson Button,McLaren,15,8.0
-19,Emerson Fittipaldi,McLaren,14,6.0
-20,Graham Hill,BRM,14,13.0
-21,Jack Brabham,Brabham,14,13.0
-22,Alberto Ascari,Ferrari,13,14.0
-23,David Coulthard,McLaren,13,12.0
-24,Mario Andretti,Ferrari,12,18.0
-25,Alan Jones,Williams,12,6.0
-26,Carlos Reutemann,Williams,12,6.0
-27,Felipe Massa,Ferrari,11,16.0
-28,Rubens Barrichello,Ferrari,11,14.0
-29,Jacques Villeneuve,Williams,11,13.0
-30,Jody Scheckter,Ferrari,10,3.0
-31,Gerhard Berger,McLaren,10,12.0
-32,Ronnie Peterson,Team Lotus,10,14.0
-33,Valtteri Bottas,Mercedes,10,20.0
-34,James Hunt,McLaren,10,14.0
-35,Mark Webber,Red Bull,9,13.0
-36,Daniel Ricciardo,McLaren,8,3.0
-37,Denny Hulme,McLaren,8,1.0
-38,Jacky Ickx,Ferrari,8,13.0
-39,Juan Pablo Montoya,McLaren,7,13.0
-40,René Arnoux,Renault,7,18.0
-41,Jacques Laffite,Ligier,6,7.0
-42,Tony Brooks,Ferrari,6,4.0
-43,Gilles Villeneuve,Ferrari,6,2.0
-44,Jochen Rindt,Team Lotus,6,10.0
-45,Riccardo Patrese,Williams,6,8.0
-46,Ralf Schumacher,Williams,6,6.0
-47,John Surtees,Ferrari,6,8.0
-48,Sergio Pérez,Red Bull,6,3.0
-49,Keke Rosberg,Williams,5,5.0
-50,Michele Alboreto,Ferrari,5,2.0
-51,Nino Farina,Ferrari,5,6.0
-52,John Watson,McLaren,5,2.0
-53,Clay Regazzoni,Williams,5,5.0
-54,Charles Leclerc,Ferrari,5,20.0
-57,Dan Gurney,Brabham-Climax,4,3.0
-58,Heinz-Harald Frentzen,Williams,3,2.0
-59,Phil Hill,Ferrari,3,6.0
-60,Didier Pironi,Ferrari,3,4.0
-61,Mike Hawthorn,Ferrari,3,4.0
-62,Giancarlo Fisichella,Renault,3,4.0
-65,Thierry Boutsen,Williams,3,1.0
-66,Bill Vukovich,Kurtis Kraft,2,1.0
-68,Patrick Tambay,Ferrari,2,5.0
-69,Patrick Depailler,Tyrrell,2,1.0
-70,Peter Revson,McLaren,2,1.0
-71,Jo Siffert,BRM,2,2.0
-72,Elio de Angelis,Team Lotus,2,3.0
-73,José Froilán González,Ferrari,2,3.0
-74,Wolfgang von Trips,Ferrari,2,1.0
-75,Jean-Pierre Jabouille,Renault,2,6.0
-76,Maurice Trintignant,Ferrari,2,1.0
-78,Carlos Pace,Brabham,1,1.0
-84,Vittorio Brambilla,March,1,1.0
-85,Robert Kubica,BMW Sauber,1,1.0
-87,Carlos Sainz,Ferrari,1,3.0
-91,Pat Flaherty,Watson,1,1.0
-92,Pastor Maldonado,Williams,1,1.0
-93,Jo Bonnier,BRM,1,1.0
-98,Jean Alesi,Ferrari,1,2.0
-100,Jarno Trulli,Renault,1,4.0
-101,Lorenzo Bandini,Ferrari,1,1.0
-103,Luigi Fagioli,Alfa Romeo,1,1.0
-106,Heikki Kovalainen,McLaren,1,1.0
-109,George Russell,Mercedes,1,2.0
+,full_name,name,race poles,grid poles,racexgrid
+0,Denny Hulme,McLaren,8,1,8.0
+1,Jody Scheckter,Ferrari,10,3,3.33
+2,Gilles Villeneuve,Ferrari,6,2,3.0
+3,Thierry Boutsen,Williams,3,1,3.0
+4,Daniel Ricciardo,McLaren,8,3,2.67
+5,Michele Alboreto,Ferrari,5,2,2.5
+6,John Watson,McLaren,5,2,2.5
+7,Emerson Fittipaldi,McLaren,14,6,2.33
+8,Sergio Pérez,Red Bull,6,3,2.0
+9,Bill Vukovich,Kurtis Kraft,2,1,2.0
+10,Patrick Depailler,Tyrrell,2,1,2.0
+11,Peter Revson,McLaren,2,1,2.0
+12,Carlos Reutemann,Williams,12,6,2.0
+13,Alan Jones,Williams,12,6,2.0
+14,Wolfgang von Trips,Ferrari,2,1,2.0
+15,Maurice Trintignant,Ferrari,2,1,2.0
+16,Jenson Button,McLaren,15,8,1.88
+17,Max Verstappen,Red Bull,45,27,1.67
+18,Jackie Stewart,Tyrrell,27,17,1.59
+19,Alain Prost,McLaren,51,33,1.55
+20,Tony Brooks,Ferrari,6,4,1.5
+21,Heinz-Harald Frentzen,Williams,3,2,1.5
+22,Fernando Alonso,McLaren,32,22,1.45
+23,Michael Schumacher,Ferrari,91,68,1.34
+24,Dan Gurney,Brabham-Climax,4,3,1.33
+25,Kimi Räikkönen,McLaren,21,18,1.17
+26,Damon Hill,Williams,22,20,1.1
+27,Graham Hill,BRM,14,13,1.08
+28,Jack Brabham,Brabham,14,13,1.08
+29,David Coulthard,McLaren,13,12,1.08
+30,Niki Lauda,McLaren,25,24,1.04
+31,Carlos Pace,Brabham,1,1,1.0
+32,Lorenzo Bandini,Ferrari,1,1,1.0
+33,Jo Bonnier,BRM,1,1,1.0
+34,Pastor Maldonado,Williams,1,1,1.0
+35,Clay Regazzoni,Williams,5,5,1.0
+36,Jo Siffert,BRM,2,2,1.0
+37,Luigi Fagioli,Alfa Romeo,1,1,1.0
+38,Pat Flaherty,Watson,1,1,1.0
+39,Robert Kubica,BMW Sauber,1,1,1.0
+40,Keke Rosberg,Williams,5,5,1.0
+41,Heikki Kovalainen,McLaren,1,1,1.0
+42,Ralf Schumacher,Williams,6,6,1.0
+43,Vittorio Brambilla,March,1,1,1.0
+44,Lewis Hamilton,McLaren,103,104,0.99
+45,Nigel Mansell,Williams,31,32,0.97
+46,Nelson Piquet,Williams,23,24,0.96
+47,Stirling Moss,Team Lotus,16,17,0.94
+48,Sebastian Vettel,Toro Rosso,53,57,0.93
+49,Alberto Ascari,Ferrari,13,14,0.93
+50,Jacques Laffite,Ligier,6,7,0.86
+51,Jacques Villeneuve,Williams,11,13,0.85
+52,Juan Fangio,Ferrari,24,29,0.83
+53,Nino Farina,Ferrari,5,6,0.83
+54,Gerhard Berger,McLaren,10,12,0.83
+55,Rubens Barrichello,Ferrari,11,14,0.79
+56,Nico Rosberg,Mercedes,23,30,0.77
+57,Mika Häkkinen,McLaren,20,26,0.77
+58,Giancarlo Fisichella,Renault,3,4,0.75
+59,Riccardo Patrese,Williams,6,8,0.75
+60,Mike Hawthorn,Ferrari,3,4,0.75
+61,Didier Pironi,Ferrari,3,4,0.75
+62,John Surtees,Ferrari,6,8,0.75
+63,Jim Clark,Lotus-Ford,25,34,0.74
+64,Ronnie Peterson,Team Lotus,10,14,0.71
+65,James Hunt,McLaren,10,14,0.71
+66,Felipe Massa,Ferrari,11,16,0.69
+67,Mark Webber,Red Bull,9,13,0.69
+68,José Froilán González,Ferrari,2,3,0.67
+69,Mario Andretti,Ferrari,12,18,0.67
+70,Elio de Angelis,Team Lotus,2,3,0.67
+71,Ayrton Senna,McLaren,41,65,0.63
+72,Jacky Ickx,Ferrari,8,13,0.62
+73,Jochen Rindt,Team Lotus,6,10,0.6
+74,Juan Pablo Montoya,McLaren,7,13,0.54
+75,Jean Alesi,Ferrari,1,2,0.5
+76,Phil Hill,Ferrari,3,6,0.5
+77,George Russell,Mercedes,1,2,0.5
+78,Valtteri Bottas,Mercedes,10,20,0.5
+79,Patrick Tambay,Ferrari,2,5,0.4
+80,René Arnoux,Renault,7,18,0.39
+81,Jean-Pierre Jabouille,Renault,2,6,0.33
+82,Carlos Sainz,Ferrari,1,3,0.33
+83,Charles Leclerc,Ferrari,5,20,0.25
+84,Jarno Trulli,Renault,1,4,0.25
