@@ -142,7 +142,18 @@ class ConstructorChart {
       // Tooltip event listeners
       .on("mouseleave", () => {
         d3.select("#tooltip").style("display", "none");
-      });
+      })
+
+
+
+        //to render driver chart on click //TODO: put in helper
+        .on("click", (event, d) => {
+          d3
+          .select("#driverChart")
+          .style("display", "block")
+          .call(createDriverChart(d.name))
+        });
+
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);

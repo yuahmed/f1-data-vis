@@ -29,7 +29,7 @@
     </div>
     <div class="container">
         <div class="col-12 col-md-12 col-lg-12">
-            <h2>Top 10 Constructors in F1 from 1950 - 2023</h2>
+            <h2>Top 10 Constructors in F1</h2>
             <!-- Parent container for the visualization -->
             <div><svg id="const-chart-area"></svg></div>
 
@@ -37,9 +37,19 @@
         </div>
     </div>
 
+    <div class="container" id="driverChart" style="display: none;">
+        <div class="col-12 col-md-12 col-lg-12">
+            <h2>Top 7 Drivers of XXX</h2>
+            <!-- Parent container for the visualization -->
+            <div><svg id="driver-chart-area"></svg></div>
+
+            <div id="tooltip"></div>
+        </div>
+    </div>
 
 
-    <!-- Select box to choose the ranking type -->
+
+    <!-- Select box to choose the ranking type
     <form class="form-inline">
 			<div class="form-group">
 		    <label for="points">Group by</label>
@@ -49,7 +59,7 @@
 				</select>
 
 		  </div>
-		</form>
+		</form> -->
 
 
 
@@ -65,6 +75,7 @@
     <!-- Your implementation -->
     <script src="js/main.js"></script>
     <script src="js/constructorChart.js"></script>
+    <script src="js/driverChart.js"></script>
     <!-- <script src="js/barchart.js"></script> -->
 
 </body>
