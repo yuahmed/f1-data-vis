@@ -8,7 +8,7 @@
     <title>Formula 1 Data Analysis</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Font -->
     <link href="https://fonts.cdnfonts.com/css/orbitron" rel="stylesheet">
@@ -21,7 +21,7 @@
 
 <body>
 
-    
+
 
     <div class="container">
         <div class="col-12 col-md-12 col-lg-12">
@@ -29,42 +29,41 @@
         </div>
 
     </div>
+
     <div class="container">
-        
-        <div class="col-12 col-md-12 col-lg-12">
+        <div>
             <h2>Top 10 Constructors in F1</h2>
             <!-- Parent container for the visualization -->
             <div><svg id="const-chart-area"></svg></div>
-
             <div id="tooltip"></div>
+
+            <!-- Select box to choose the ranking type -->
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="ranking-type">Sort</label>
+                    <select class="form-control" id="ranking-type" onchange="updateSorting()">
+                        <option value="wins">by Wins</option>
+                        <option value="points" selected>by Points</option>
+                    </select>
+                </div>
+            </form>
         </div>
-    </div>
 
-    <div class="container" id="driverChart" style="display: none;">
-        <div class="col-12 col-md-12 col-lg-12">
-            <h2 id="driverTitle">Top 7 Drivers of XXX</h2>
-            <!-- Parent container for the visualization -->
-            <div><svg id="driver-chart-area"></svg></div>
+        <!-- <div class="col-1 col-md-1 col-lg-1"> -->
 
-            <div id="tooltip"></div>
+
+        <!-- </div> -->
+
+
+        <div class="margin-right">
+            <div id="driverChart" style="display: none;">
+                <h2 id="driverTitle">Top 7 Drivers of XXX</h2>
+                <!-- Parent container for the visualization -->
+                <div><svg id="driver-chart-area"></svg></div>
+
+                <div id="tooltip"></div>
+            </div>
         </div>
-    </div>
-
-
-
-    <!-- Select box to choose the ranking type
-    <form class="form-inline">
-			<div class="form-group">
-		    <label for="points">Group by</label>
-		    <select class="form-control" id="points" onchange="updateVisualization()">
-				  <option value="one">ONE</option>
-				  <option value="three">THREE</option>
-				</select>
-
-		  </div>
-		</form> -->
-
-
 
     </div>
 

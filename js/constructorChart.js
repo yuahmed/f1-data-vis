@@ -10,7 +10,6 @@ class ConstructorChart {
     // Configuration object with defaults
     this.config = {
       parentElement: _config.parentElement,
-      colorScale: _config.colorScale,
       margin: _config.margin || { top: 40, right: 10, bottom: 60, left: 60 },
       containerWidth: _config.containerWidth || 960,
       containerHeight: _config.containerHeight || 500,
@@ -40,20 +39,17 @@ class ConstructorChart {
 
     // Initialize scales
 
-    // creating the color scale
-    vis.colorScale = this.config.colorScale;
+    // // creating the color scale
+    // vis.colorScale = this.config.colorScale;
 
     //x and y scale
-    vis.xScale = d3
-      .scaleBand()
-      .range([0, vis.width])
-      .paddingInner(0.05);
+    vis.xScale = d3.scaleBand().range([0, vis.width]).paddingInner(0.05);
 
     vis.yScale = d3.scaleLinear().range([vis.height, 0]);
 
     // defining axes
-     vis.xAxis = d3.axisBottom(vis.xScale).tickSizeOuter(0);
-     vis.yAxis = d3.axisLeft(vis.yScale).tickSizeOuter(0);
+    vis.xAxis = d3.axisBottom(vis.xScale).tickSizeOuter(0);
+    vis.yAxis = d3.axisLeft(vis.yScale).tickSizeOuter(0);
 
     // Define size of SVG drawing area
     vis.svg = d3
@@ -77,15 +73,6 @@ class ConstructorChart {
 
     // Append y-axis group
     vis.yAxisG = vis.chart.append("g").attr("class", "axis y-axis");
-
-    // Append axis title
-    vis.svg
-      .append("text")
-      .attr("class", "axis-title")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("dy", ".71em")
-      .text("Points");
   }
 
   /**
@@ -94,76 +81,103 @@ class ConstructorChart {
   updateVis() {
     let vis = this;
 
+    const rankType = d3.select("#ranking-type").property("value");
+
+
+      vis.data= vis.data.sort((a, b) => b[rankType] - a[rankType]);
+  
+
+
     // Specify accessor functions
-    vis.colorValue = (d) => d.points;
+    vis.colorValue = (d) => d[rankType];
     vis.xValue = (d) => d.name;
-    vis.yValue = (d) => d.points;
+    vis.yValue = (d) => d[rankType];
 
     // Set the scale input domains
     vis.xScale.domain(vis.data.map(vis.xValue));
     vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
 
-    vis.renderVis();
+    vis.renderVis(rankType);
   }
 
   filterData(teamName) {
-
     d3.csv("data/racexpole.csv")
       .then((csv) => {
-      data = csv;
+        data = csv;
 
-      //converting to numerics
-      data.forEach(function (d) {
-        d.racexgrid = +d.racexgrid;
-        d.race_poles = +d.race_poles;
-        d.grid_poles = +d.grid_poles
-      
+        //converting to numerics
+        data.forEach(function (d) {
+          d.racexgrid = +d.racexgrid;
+          d.race_poles = +d.race_poles;
+          d.grid_poles = +d.grid_poles;
+        });
+
+        data = data.filter((d) => d.name === teamName);
+
+        //sorting by constructor points
+        data = data.sort((a, b) => b.points - a.points);
+
+        d3.select("#driver-chart-area").selectAll("*").remove();
+        //console.log(data.slice(0,10))
+
+        data = data.slice(0, 7); // TEMPORARY!!!
+
+        //console.log(top10data)
+
+        // creating the color scale
+        const colorScale = d3
+          .scaleLinear()
+          .domain([data[0].racexgrid, 0]) //MAY NEED CHANGE
+          .range(["lightgrey", "black"]); //TEMPORARY
+
+        // Draw the visualization for the first time
+        driverChart = new DriverChart(
+          { parentElement: "#driver-chart-area", colorScale: colorScale },
+          data
+        );
+
+        const numberOfDrivers = data.length;
+        d3.select("#driverTitle").text(
+          `Top ${numberOfDrivers} Drivers of ${teamName}`
+        );
+
+        driverChart.updateVis();
+      })
+
+      .catch((error) => {
+        console.log("Error loading the data");
+        console.log(error);
       });
-
-      data = data.filter((d) => d.name === teamName);
-
-      //sorting by constructor points
-      data = data.sort((a, b) => b.points - a.points);
-    
-      d3.select("#driver-chart-area").selectAll("*").remove()
-      //console.log(data.slice(0,10))
-
-      data = data.slice(0, 7); // TEMPORARY!!!
-
-      
-      //console.log(top10data)
-
-      // creating the color scale
-      const colorScale = d3
-        .scaleLinear()
-        .domain([data[0].racexgrid, 0]) //MAY NEED CHANGE
-        .range(["red", "green"]); //TEMPORARY
-
-      // Draw the visualization for the first time
-      driverChart = new DriverChart(
-        { parentElement: "#driver-chart-area", colorScale: colorScale },
-        data
-      );
-
-    const numberOfDrivers = data.length;
-    d3.select("#driverTitle").text(`Top ${numberOfDrivers} Drivers of ${teamName}`);
-
-    driverChart.updateVis();
-
-})
-
-.catch((error) => {
-  console.log("Error loading the data");
-  console.log(error);
-});
-
   }
 
   /**
    * Bind data to visual elements
    */
-  renderVis() {
+  renderVis(rankType) {
     let vis = this;
+    console.log(rankType) 
+    console.log(vis.data[0][rankType])
+
+    vis.chart.selectAll(".bar").remove();
+    vis.svg.selectAll(".axis-title").remove();
+
+       
+        // Append axis title
+        vis.svg
+        .append("text")
+        .attr("class", "axis-title")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("dy", ".71em")
+        .text(`${rankType}`);
+
+    //vis.chart.select(".y-axis").transition().duration(500).call(yAxis);
+
+     // creating the color scale
+    vis.colorScale = d3
+      .scaleLinear()
+      .domain([vis.data[0][rankType], 0])
+      .range(["lightgrey", "black"]);
 
     // Add rectangles
     vis.bars = vis.chart
@@ -173,11 +187,10 @@ class ConstructorChart {
       .append("rect")
       .attr("class", "bar")
       .attr("x", (d) => vis.xScale(d.name)) // Set x position based on data"s key using x-scale
-      .attr("y", (d) => vis.yScale(d.points)) // Set y position based on count using y-scale
+      .attr("y", (d) => vis.yScale(d[rankType])) // Set y position based on count using y-scale
       .attr("width", vis.xScale.bandwidth()) // Set bar width based on band scale
-      .attr("height", (d) => vis.height - vis.yScale(d.points))
-      .attr("fill", (d) => vis.colorScale(d.points))
-      
+      .attr("height", (d) => vis.height - vis.yScale(d[rankType]))
+      .attr("fill", (d) => vis.colorScale(d[rankType]))
 
       .on("mouseover", (event, d) => {
         d3
@@ -198,20 +211,34 @@ class ConstructorChart {
       .on("mouseleave", () => {
         d3.select("#tooltip").style("display", "none");
       })
-
-
-
-        //to render driver chart on click //TODO: put in helper
-        .on("click", (event, d) => {
-          d3
-          .select("#driverChart")
+      //to render driver chart on click //TODO: put in helper
+      .on("click", (event, d) => {
+        d3.select("#driverChart")
           .style("display", "block")
           .call(this.filterData(d.name));
-        });
-
+      });
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
   }
 }
+
+
+// // sorting in ascending order
+// var ascending = true;
+
+// d3.select("#change-sorting").on("click", function () {
+//   // Toggle sorting state
+//   ascending = !ascending;
+//   // Sort data based on the sorting state
+//   data.sort((a, b) => {
+//     if (ascending) {
+//       return a.points - b.points;
+//     } else {
+//       return b.stores - a.stores;
+//     }
+//   });
+//   // Update visualization
+//   updateVis();
+// });

@@ -1,6 +1,6 @@
 let constructorChart;
 
-let driverChart;
+// let driverChart;
 
 // creating the CONSTRUCTOR CHART
 // Loading data CSV file
@@ -8,6 +8,7 @@ d3.csv("data/constructor_data.csv")
   .then((csv) => {
     data = csv;
 
+    
     //converting to numerics
     data.forEach(function (d) {
       d.points = +d.points;
@@ -23,15 +24,11 @@ d3.csv("data/constructor_data.csv")
 
     //console.log(top10data)
 
-    // creating the color scale
-    const colorScale = d3
-      .scaleLinear()
-      .domain([top10data[0].points, 0])
-      .range(["lightgrey", "black"]);
+
 
     // Draw the visualization for the first time
     constructorChart = new ConstructorChart(
-      { parentElement: "#const-chart-area", colorScale: colorScale },
+      { parentElement: "#const-chart-area"},
       top10data
     );
 
@@ -43,54 +40,57 @@ d3.csv("data/constructor_data.csv")
     console.log(error);
   });
 
+  function updateSorting(){
+    constructorChart.updateVis()
+  }
 
-function createDriverChart(teamName){
-  // creating the DRIVER chart
-d3.csv("data/racexpole.csv")
-.then((csv) => {
-  data = csv;
+// function createDriverChart(teamName){
+//   // creating the DRIVER chart
+// d3.csv("data/racexpole.csv")
+// .then((csv) => {
+//   data = csv;
 
-  //converting to numerics
-  data.forEach(function (d) {
-    d.racexgrid = +d.racexgrid;
-    d.race_poles = +d.race_poles;
-    d.grid_poles = +d.grid_poles
+//   //converting to numerics
+//   data.forEach(function (d) {
+//     d.racexgrid = +d.racexgrid;
+//     d.race_poles = +d.race_poles;
+//     d.grid_poles = +d.grid_poles
    
-  });
+//   });
 
-  data = data.filter((d) => d.name === teamName);
+//   data = data.filter((d) => d.name === teamName);
 
-  //sorting by constructor points
-  data = data.sort((a, b) => b.points - a.points);
+//   //sorting by constructor points
+//   data = data.sort((a, b) => b.points - a.points);
  
 
-  //console.log(data.slice(0,10))
+//   //console.log(data.slice(0,10))
 
-  data = data.slice(0, 7); // TEMPORARY!!!
+//   data = data.slice(0, 7); // TEMPORARY!!!
 
-  //console.log(top10data)
+//   //console.log(top10data)
 
-  // creating the color scale
-  const colorScale = d3
-    .scaleLinear()
-    .domain([data[0].racexgrid, 0]) //MAY NEED CHANGE
-    .range(["red", "green"]); //TEMPORARY
+//   // creating the color scale
+//   const colorScale = d3
+//     .scaleLinear()
+//     .domain([data[0].racexgrid, 0]) //MAY NEED CHANGE
+//     .range(["red", "green"]); //TEMPORARY
 
-  // Draw the visualization for the first time
-  driverChart = new DriverChart(
-    { parentElement: "#driver-chart-area", colorScale: colorScale },
-    data
-  );
+//   // Draw the visualization for the first time
+//   driverChart = new DriverChart(
+//     { parentElement: "#driver-chart-area", colorScale: colorScale },
+//     data
+//   );
 
- driverChart.updateVis();
-})
+//  driverChart.updateVis();
+// })
 
-.catch((error) => {
-  console.log("Error loading the data");
-  console.log(error);
-});
+// .catch((error) => {
+//   console.log("Error loading the data");
+//   console.log(error);
+// });
 
-}
+// }
 
 
 //createDriverChart('Ferrari');
