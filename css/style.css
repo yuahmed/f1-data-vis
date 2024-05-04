@@ -21,6 +21,11 @@ body {
   h3{
     font-size: larger;
   }
+
+  p{
+    font-family: 'Luicida Sans';
+    font-size: x-large;
+  }
   /* Marks */
 
 .bar {
