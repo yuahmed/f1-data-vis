@@ -1,3 +1,5 @@
+let driverChart;
+
 class ConstructorChart {
   /**
    * Class constructor with basic chart configuration
@@ -104,6 +106,54 @@ class ConstructorChart {
     vis.renderVis();
   }
 
+  filterData(teamName) {
+
+    d3.csv("data/racexpole.csv")
+      .then((csv) => {
+      data = csv;
+
+      //converting to numerics
+      data.forEach(function (d) {
+        d.racexgrid = +d.racexgrid;
+        d.race_poles = +d.race_poles;
+        d.grid_poles = +d.grid_poles
+      
+      });
+
+      data = data.filter((d) => d.name === teamName);
+
+      //sorting by constructor points
+      data = data.sort((a, b) => b.points - a.points);
+    
+      d3.select("#driver-chart-area").selectAll("*").remove()
+      //console.log(data.slice(0,10))
+
+      data = data.slice(0, 7); // TEMPORARY!!!
+
+      //console.log(top10data)
+
+      // creating the color scale
+      const colorScale = d3
+        .scaleLinear()
+        .domain([data[0].racexgrid, 0]) //MAY NEED CHANGE
+        .range(["red", "green"]); //TEMPORARY
+
+      // Draw the visualization for the first time
+      driverChart = new DriverChart(
+        { parentElement: "#driver-chart-area", colorScale: colorScale },
+        data
+      );
+
+    driverChart.updateVis();
+})
+
+.catch((error) => {
+  console.log("Error loading the data");
+  console.log(error);
+});
+
+  }
+
   /**
    * Bind data to visual elements
    */
@@ -151,7 +201,7 @@ class ConstructorChart {
           d3
           .select("#driverChart")
           .style("display", "block")
-          .call(createDriverChart(d.name))
+          .call(this.filterData(d.name));
         });
 
 
