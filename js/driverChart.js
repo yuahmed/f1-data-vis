@@ -9,7 +9,7 @@ class DriverChart {
       this.config = {
         parentElement: _config.parentElement,
         colorScale: _config.colorScale,
-        margin: _config.margin || { top: 40, right: 10, bottom: 60, left: 60 },
+        margin: _config.margin || { top: 40, right: 10, bottom: 60, left: 50 },
         containerWidth: _config.containerWidth || 960,
         containerHeight: _config.containerHeight || 500,
         tooltipPadding: _config.tooltipPadding || 15,
