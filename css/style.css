@@ -18,6 +18,9 @@ body {
     text-align: center;
   }
   
+  h3{
+    font-size: larger;
+  }
   /* Marks */
 
 .bar {

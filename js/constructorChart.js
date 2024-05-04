@@ -128,7 +128,7 @@ class ConstructorChart {
         const colorScale = d3
           .scaleLinear()
           .domain([data[0].racexgrid, 0]) //MAY NEED CHANGE
-          .range(["lightgrey", "black"]); //TEMPORARY
+          .range(["#8E3C06", "#C98703"]); //colors pass WebAIM
 
         // Draw the visualization for the first time
         driverChart = new DriverChart(
@@ -177,7 +177,7 @@ class ConstructorChart {
     vis.colorScale = d3
       .scaleLinear()
       .domain([vis.data[0][rankType], 0])
-      .range(["lightgrey", "black"]);
+      .range(["#8E3C06", "#C98703"]); //colors pass WebAIM
 
     // Add rectangles
     vis.bars = vis.chart
@@ -223,22 +223,3 @@ class ConstructorChart {
     vis.yAxisG.call(vis.yAxis);
   }
 }
-
-
-// // sorting in ascending order
-// var ascending = true;
-
-// d3.select("#change-sorting").on("click", function () {
-//   // Toggle sorting state
-//   ascending = !ascending;
-//   // Sort data based on the sorting state
-//   data.sort((a, b) => {
-//     if (ascending) {
-//       return a.points - b.points;
-//     } else {
-//       return b.stores - a.stores;
-//     }
-//   });
-//   // Update visualization
-//   updateVis();
-// });
