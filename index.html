@@ -38,16 +38,17 @@
         <!-- Select box to choose the ranking type -->
         <div class="row">
             <div class="col-5">
-                <form class="form mb-5">
+                <form class="form-inline mb-5">
                     <div class="form-group">
                         <label for="ranking-type">
                             <h2>Sort</h2>
                         </label>
-                        <select class="form-control" id="ranking-type" onchange="updateSorting()">
+                        <select class="form-select" id="ranking-type" onchange="updateSorting()">
                             <option value="wins">by Wins</option>
                             <option value="points" selected>by Points</option>
                         </select>
                     </div>
+                    
                 </form>
             </div>
         </div>
