@@ -130,6 +130,7 @@ class ConstructorChart {
 
       data = data.slice(0, 7); // TEMPORARY!!!
 
+      
       //console.log(top10data)
 
       // creating the color scale
@@ -144,7 +145,11 @@ class ConstructorChart {
         data
       );
 
+    const numberOfDrivers = data.length;
+    d3.select("#driverTitle").text(`Top ${numberOfDrivers} Drivers of ${teamName}`);
+
     driverChart.updateVis();
+
 })
 
 .catch((error) => {
