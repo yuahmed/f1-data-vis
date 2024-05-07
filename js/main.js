@@ -68,29 +68,3 @@ function createConstructorChart() {
 function updateSorting() {
   constructorChart.updateVis();
 }
-
-var i = 0;
-var txt = "Formula 1 (F1) is the top tier of single-seater auto racing, overseen by the Fédération Internationale de l'Automobile (FIA) and owned by the Formula One Group. Since its inception in 1950, the FIA Formula One World Championship has featured a series of races known as Grands Prix, held globally on specialized circuits. The term 'formula' denotes the standardized regulations that all participating cars must adhere to. In addition to teams, known as constructors, upon selecting a constructor, we present another bar chart showcasing the top drivers associated with that constructor. To evaluate drivers' performances, we've developed a ratio comparing their grid pole position (determined by qualifying races) to their race pole position (the final race result). This ratio rewards drivers who effectively navigate from a disadvantaged starting position to achieve a commendable finish, reflecting their overall performance throughout the race.";
-var speed = 40;
-var pauseDuration = 1000; /* The duration of pause in milliseconds */
-
-function typeWriter() {
-  var introductionElement = document.getElementById("introduction");
-
-  if (i < txt.length) {
-    introductionElement.innerHTML += txt.charAt(i);
-    if (txt.charAt(i) === '.' || txt.charAt(i) === '!') {
-      introductionElement.innerHTML += '<br><br>';
-      i++;
-      setTimeout(typeWriter, pauseDuration); // Pause after each sentence
-    } else {
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-};
-
-document.addEventListener("DOMContentLoaded", function() {
-  typeWriter(); // Call typeWriter() function when the document finishes loading
-});
-

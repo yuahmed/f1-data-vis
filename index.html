@@ -24,7 +24,22 @@
     <div class="container-fluid view" id="intro">
         <div class="col-12 col-md-12 col-lg-12">
             <h1>Formula 1 (F1) Through 1950 to 2023</h1>
-            <p id="introduction"></p>
+            <p id="introduction">Formula 1 (F1) is the top tier of single-seater auto racing, overseen by
+                the Fédération Internationale de l'Automobile (FIA) and owned by the Formula One Group. Since its
+                inception in 1950, the FIA Formula One World Championship has featured a series of races known as Grands
+                Prix, held globally on specialized circuits. The term 'formula' denotes the standardized regulations
+                that all participating cars must adhere to.
+                <br>
+                <br>
+                In our data visualization, in addition to teams, known as constructors, upon selecting a constructor, we
+                present another bar chart showcasing the top drivers associated with that constructor.
+                <br>
+                <br>
+                To evaluate drivers' performances, we've developed a ratio comparing their grid pole position
+                (determined by qualifying races) to their race pole position (the final race result). This ratio rewards
+                drivers who effectively navigate from a disadvantaged starting position to achieve a commendable finish,
+                reflecting their overall performance throughout the race.
+            </p>
             <button class="btn btn-dark mt-2" onclick="displayView('charts')">Continue</button>
         </div>
     </div>
@@ -56,13 +71,15 @@
                 <div><svg id="const-chart-area"></svg></div>
                 <!-- TEMPORARY ALT TEXT !!!  -->
                 <h4 class="sr-only"> This visualization shows a bar chart of the top 10 constructor teams by points in
-                    formula one from 1950 to 2023. Points are mapped on the vertical axis and the constructor names are
-                    positioned on the horizontal axis. The top constructor team is Ferrari with 91389 points and 1923
-                    wins, followed by Mercedes having points 73379.5 points and 1207 wins, Red Bull with 68243.5 points
-                    and 976 wins, McLaren with 57557.5 points and 1604 wins, Williams with 32147.5 points and 934 wins,
-                    Renault with 17168 points and 352 wins, Force India with 10347 points and 0 wins, Team Lotus with
-                    7742 points and 374 wins, Lotus F1 with 7485 points and 22 wins and Benetton with 7439.5 points and
-                    220 wins in last. </h4>
+                    formula one from 1950 to 2023. The top team is Ferrari with 91389 points, followed by Mercedes
+                    (73379.5 points), Red Bull (68243.5 points), McLaren (57557.5 points), Williams (32147.5), Renault
+                    (17168 points), Force India (10347 points), Team Lotus (7742 points), Lotus F1 (7485 points) and
+                    Benetton (7439.5 points) in last.
+
+                    When ordered by wins, Ferrari leads with 1923 wins, followed by McLaren (1604 wins), Mercedes (1207
+                    wins), Red Bull (976 wins), Williams (934 wins), Team Lotus (374 wins), Renault (352 wins), Benetton
+                    (220 wins), Lotus F1 (22 wins) and Force India (0 wins) in last.
+                </h4>
 
                 <div id="tooltip"></div>
 
