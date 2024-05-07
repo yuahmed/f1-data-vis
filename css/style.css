@@ -1,107 +1,111 @@
 body {
-    font-family: "Orbitron", sans-serif;
-    font-size: 13px;
-    padding: 30px;
-    background: #f7f7f7;
-  }
-  
-  .container {
-    display: flex;
-  }
-  
-  .margin-right {
-    margin-right: 30px;
-  }
-  
-  h1 {
-    margin-top: 0;
-    text-align: center;
-  }
-  
-  h3{
-    font-size: larger;
-  }
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  padding: 30px;
+  background: #f7f7f7;
+}
 
-  p{
-    font-family: 'Luicida Sans';
-    font-size: x-large;
-  }
-  /* Marks */
+/* SCREEN READER  */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
+.container {
+  display: flex;
+}
+
+.margin-right {
+  margin-right: 30px;
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+h3 {
+  font-size: larger;
+}
+
+p {
+  font-family: "Luicida Sans";
+  font-size: x-large;
+}
+
+/* Marks */
 .bar {
-    shape-rendering: crispEdges;
-  }
-  .bar:hover {
-    stroke: #777;
-    fill: #1FE  /*TEMPORARY COLOR*/
-  }
-  
-  
-  /* Axes */
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
-  
-  .axis-title {
-    font-size: 14px;
-    fill: #888;
-  }
-  .y-axis .tick:first-child line {
-    stroke: #000;
-  }
-  .y-axis .tick:first-child text {
-    display: none;
-  }
-  .x-axis .tick:first-child line {
-    display: none;
-  }
-  .axis path {
-    display: none;
-  }
-  .x-axis, .y-axis text {
-    font-size: 14px; /* Adjust the font size as needed */
-  }
-  
-  
-  /* Tooltip */
-  #tooltip {
-    position: absolute;
-    display: none;
-    background: #fff;
-    box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
-    border: 1px solid #ddd;
-    font-family: 'Helvetica';
-    font-size: 15px;
-    font-weight: 500;
-    padding: 8px;
-    min-width: 160px;
-    color: #333;
-  }
-  .tooltip-title {
-    color: #000;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  #tooltip ul {
-    margin: 5px 0 0 0;
-    padding-left: 20px;
-  }
-  
-   /* FORM */
+  shape-rendering: crispEdges;
+}
+.bar:hover {
+  stroke: #777;
+  fill: #03a89d; /*TEMPORARY COLOR*/
+}
 
-/*************/
+/* Axes */
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis-title {
+  font-size: 14px;
+  fill: #888;
+}
+.y-axis .tick:first-child line {
+  stroke: #000;
+}
+.y-axis .tick:first-child text {
+  display: none;
+}
+.x-axis .tick:first-child line {
+  display: none;
+}
+.axis path {
+  display: none;
+}
+.x-axis,
+.y-axis text {
+  font-size: 14px; /* Adjust the font size as needed */
+}
+
+/* Tooltip */
+#tooltip {
+  position: absolute;
+  display: none;
+  background: #fff;
+  box-shadow: 3px 3px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  font-family: "Helvetica";
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px;
+  min-width: 160px;
+  color: #333;
+}
+.tooltip-title {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+}
+#tooltip ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}
+
 /*    FORM   */
-/*************/
-
 .form-inline {
   margin-bottom: 30px;
 }
 
 .form-control {
-  background: #E2DDD1;
-  border: 1px solid #D49999;
+  background: #e2ddd1;
+  border: 1px solid #d49999;
   width: 250px;
 }
 
@@ -110,7 +114,8 @@ body {
   margin-right: 10px;
 }
 
-.form-inline button, .btn-link:active {
+.form-inline button,
+.btn-link:active {
   border-left: 1px solid #888;
   margin-left: 15px;
   padding-left: 15px;
@@ -118,9 +123,11 @@ body {
   cursor: pointer;
   outline: none;
 }
-.form-inline button:hover, .btn-link:active, .btn-link:focus  {
+.form-inline button:hover,
+.btn-link:active,
+.btn-link:focus {
   border-left: 1px solid #888;
-  color: #8E7060;
+  color: #8e7060;
   text-decoration: none;
   outline: none;
 }

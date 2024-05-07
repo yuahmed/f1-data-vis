@@ -83,10 +83,7 @@ class ConstructorChart {
 
     const rankType = d3.select("#ranking-type").property("value");
 
-
-      vis.data= vis.data.sort((a, b) => b[rankType] - a[rankType]);
-  
-
+    vis.data = vis.data.sort((a, b) => b[rankType] - a[rankType]);
 
     // Specify accessor functions
     vis.colorValue = (d) => d[rankType];
@@ -155,25 +152,22 @@ class ConstructorChart {
    */
   renderVis(rankType) {
     let vis = this;
-    console.log(rankType) 
-    console.log(vis.data[0][rankType])
+    // console.log(rankType);
+    // console.log(vis.data[0][rankType]);
 
     vis.chart.selectAll(".bar").remove();
     vis.svg.selectAll(".axis-title").remove();
 
-       
-        // Append axis title
-        vis.svg
-        .append("text")
-        .attr("class", "axis-title")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("dy", ".71em")
-        .text(`${rankType}`);
+    // Append axis title
+    vis.svg
+      .append("text")
+      .attr("class", "axis-title")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("dy", ".71em")
+      .text(`${rankType}`);
 
-    //vis.chart.select(".y-axis").transition().duration(500).call(yAxis);
-
-     // creating the color scale
+    // creating the color scale
     vis.colorScale = d3
       .scaleLinear()
       .domain([vis.data[0][rankType], 0])
@@ -211,7 +205,8 @@ class ConstructorChart {
       .on("mouseleave", () => {
         d3.select("#tooltip").style("display", "none");
       })
-      //to render driver chart on click //TODO: put in helper
+      
+      //to render driver chart on click
       .on("click", (event, d) => {
         d3.select("#driverChart")
           .style("display", "block")

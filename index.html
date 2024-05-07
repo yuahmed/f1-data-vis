@@ -20,9 +20,7 @@
 </head>
 
 <body>
-
-
-
+    <!-- HEADING CONTAINER  -->
     <div class="container-fluid view" id="intro">
         <div class="col-12 col-md-12 col-lg-12">
             <h1>Formula 1 (F1) Through 1950 to 2023</h1>
@@ -30,10 +28,8 @@
             <button class="btn btn-dark mt-2" onclick="displayView('charts')">Continue</button>
         </div>
     </div>
-    
-    
 
-
+    <!-- CHARTS AND VIS CONTAINER  -->
     <div class="container-fluid view" id="charts">
         <!-- Select box to choose the ranking type -->
         <div class="row">
@@ -48,7 +44,7 @@
                             <option value="points" selected>by Points</option>
                         </select>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
@@ -58,6 +54,16 @@
                 <!-- Parent container for the visualization -->
                 <h2>Top 10 Constructors in F1</h2>
                 <div><svg id="const-chart-area"></svg></div>
+                <!-- TEMPORARY ALT TEXT !!!  -->
+                <h4 class="sr-only"> This visualization shows a bar chart of the top 10 constructor teams by points in
+                    formula one from 1950 to 2023. Points are mapped on the vertical axis and the constructor names are
+                    positioned on the horizontal axis. The top constructor team is Ferrari with 91389 points and 1923
+                    wins, followed by Mercedes having points 73379.5 points and 1207 wins, Red Bull with 68243.5 points
+                    and 976 wins, McLaren with 57557.5 points and 1604 wins, Williams with 32147.5 points and 934 wins,
+                    Renault with 17168 points and 352 wins, Force India with 10347 points and 0 wins, Team Lotus with
+                    7742 points and 374 wins, Lotus F1 with 7485 points and 22 wins and Benetton with 7439.5 points and
+                    220 wins in last. </h4>
+
                 <div id="tooltip"></div>
 
             </div>
@@ -67,6 +73,8 @@
                     <h2 id="driverTitle"></h2>
                     <!-- Parent container for the visualization -->
                     <div><svg id="driver-chart-area"></svg></div>
+                    <!-- ALT TEXT DYNAMICALLY CREATED HERE -->
+                    <h4 id="driver-alt-text" class="sr-only"></h4>
 
                     <div id="tooltip"></div>
                 </div>
